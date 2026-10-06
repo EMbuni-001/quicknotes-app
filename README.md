@@ -22,3 +22,6 @@ QuickNotes is a simple, responsive note-taking web application built with HTML, 
 1. How to apply `querySelector`, `createElement`, and `textContent` to build elements.
 2. How to use `localStorage` on a page and watching the effect upon refreshing the page. 
 3. How to prevent default form submission actions.
+4. How to update an `EventListener` and functions to clear boxes after adding or deleting notes. 
+5. How to add a `Clear all` button that asks for confirmation before deleting every note.
+6. How to make the `Delete` button remove its own note.
