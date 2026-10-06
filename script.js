@@ -22,7 +22,7 @@ function saveNotes() {
 }
 
 function render() {
-    list.innerHTML = ""; // clear the old list (safe: no user text)
+    list.innerHTML = ""; 
     const searchTerm = searchInput.value.toLowerCase();
     
     const filteredNotes = notes.filter(note => 
@@ -42,7 +42,7 @@ function render() {
             contentDiv.classList.add("note-content");
             
             const textSpan = document.createElement("span");
-            textSpan.textContent = note.text; // safe for user text (prevents XSS)
+            textSpan.textContent = note.text; 
             
             const metaP = document.createElement("p");
             metaP.classList.add("note-meta");
@@ -54,7 +54,6 @@ function render() {
             const del = document.createElement("button");
             del.textContent = "Delete";
             del.classList.add("delete-btn");
-            // Closure: remembers the specific note.id
             del.addEventListener("click", () => deleteNote(note.id)); 
             
             li.appendChild(contentDiv);
@@ -90,9 +89,10 @@ function deleteNote(id) {
     notes = notes.filter((note) => note.id !== id);
     saveNotes();
     render();
+    searchInput.value = "";
 }
 form.addEventListener("submit", (event) => {
-    event.preventDefault(); // stop the page reload
+    event.preventDefault(); 
     const text = input.value.trim();
     const category = categorySelect.value;
     
@@ -105,10 +105,11 @@ form.addEventListener("submit", (event) => {
         return;
     }
     
-    errorMessage.textContent = ""; // Clear error on valid add
+    errorMessage.textContent = ""; 
     addNote(text, category);
-    input.value = "";
-    input.focus();
+    input.value = "";  
+    input.focus();   
+    searchInput.value = "";
 });
 
 searchInput.addEventListener("input", () => {
@@ -120,6 +121,7 @@ clearAllBtn.addEventListener("click", () => {
         notes = [];
         saveNotes();
         render();
+        searchInput.value = "";    
     }
 });
 
